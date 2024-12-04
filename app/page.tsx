@@ -1,101 +1,109 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button"
+import { ProductCard } from "@/components/product-card"
+import Link from "next/link"
+import { products } from "@/data/products"
+import Script from "next/script"
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Harshitha Silver Works",
+  "image": "https://your-vercel-project-name.vercel.app/images/logo.jpg",
+  "@id": "https://your-vercel-project-name.vercel.app",
+  "url": "https://your-vercel-project-name.vercel.app",
+  "telephone": "+919052011805",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Gandhi Chowk Rd",
+    "addressLocality": "Tenali",
+    "postalCode": "522201",
+    "addressRegion": "Andhra Pradesh",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 16.2433,
+    "longitude": 80.6333
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "10:00",
+    "closes": "20:00"
+  },
+  "sameAs": [
+    "https://www.facebook.com/harshithasilverworks",
+    "https://www.instagram.com/harshithasilverworks"
+  ]
+}
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <Script
+        id="structured-data-script"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <div className="flex flex-col gap-8">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center space-y-4 text-center">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+                Premium Silverware in Tenali
+              </h1>
+              <p className="mx-auto max-w-[700px] text-lg text-primary-foreground/90 md:text-xl">
+                Traditional and modern silver designs crafted with excellence. Best silverware shop in Tenali, Andhra Pradesh.
+              </p>
+              <Button asChild size="lg" variant="secondary">
+                <Link href="/products">View Our Collection</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+        <section className="container px-4 md:px-6 py-8">
+          <h2 className="text-3xl font-bold mb-8">Featured Products</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {products.slice(0, 4).map((product) => (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                price={product.price}
+                image={product.image}
+                category={product.category}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section className="container px-4 md:px-6 py-8 bg-muted">
+          <h2 className="text-3xl font-bold mb-8">Why Choose Us?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 bg-background rounded-lg">
+              <h3 className="text-xl font-bold mb-2">Quality Assured</h3>
+              <p>Premium quality silver products with certification</p>
+            </div>
+            <div className="p-6 bg-background rounded-lg">
+              <h3 className="text-xl font-bold mb-2">Custom Designs</h3>
+              <p>Personalized designs as per your requirements</p>
+            </div>
+            <div className="p-6 bg-background rounded-lg">
+              <h3 className="text-xl font-bold mb-2">Wholesale Available</h3>
+              <p>Special prices for bulk orders and wholesale</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  )
 }
+
